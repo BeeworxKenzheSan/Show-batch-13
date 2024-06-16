@@ -1,15 +1,22 @@
-import { UserIconSvg } from "./assets/iconCollections"
-import { Input } from "./UI/Input"
-import { Button } from "./UI/Button"
+import { styled } from "@mui/material"
+import { SignUpForm } from "./components/SignUpForm"
+import { Header } from "./layouts/Heaader"
 
 
 function App() {
   return (
-    <>
-      <Button>Click</Button>
-      <Input icon={<UserIconSvg />} />
-    </>
+    <Content>
+      <Header />
+      <SignUpForm />
+    </Content>
   )
 }
 
 export default App
+
+
+const Content = styled('div')`
+  margin-right: 120px;
+  margin-left: 120px;
+  margin-top: 20px;
+`
