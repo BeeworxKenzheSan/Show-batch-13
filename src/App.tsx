@@ -1,22 +1,13 @@
-import { styled } from "@mui/material"
-import { SignUpForm } from "./components/SignUpForm"
-import { Header } from "./layouts/Heaader"
+import { AppRoutes } from "./router/AppRoutes"
 
 
 function App() {
   return (
-    <Content>
-      <Header />
-      <SignUpForm />
-    </Content>
+    <AppRoutes isAuthorized={false} role={'CLIENT'}
+    />
   )
 }
 
 export default App
 
 
-const Content = styled('div')`
-  margin-right: 120px;
-  margin-left: 120px;
-  margin-top: 20px;
-`
