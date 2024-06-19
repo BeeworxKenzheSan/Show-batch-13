@@ -1,15 +1,17 @@
 import React from 'react';
-import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
+import { CircularProgress, Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
 
 interface ButtonProps extends MuiButtonProps {
     children: React.ReactNode;
     onClick?: () => void;
+    disabled?: boolean,
+    loading?: boolean
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, onClick, ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ children, onClick, disabled, loading, ...rest }) => {
     return (
-        <StyledButton onClick={onClick} {...rest}>
-            {children}
+        <StyledButton disabled={disabled || loading} onClick={onClick} {...rest}>
+            {loading ? <CircularProgress sx={{ color: "white" }} /> : children}
         </StyledButton>
     );
 }
@@ -19,7 +21,11 @@ const StyledButton = styled(MuiButton)({
     backgroundColor: '#121314',
     padding: 10,
     color: 'white',
+
     "&:hover": {
-        backgroundColor: "#2a2b2d"
-    }
+        backgroundColor: "#2a2b2d",
+    },
+    "&:disabled": {
+        backgroundColor: "#808285",
+    },
 });
